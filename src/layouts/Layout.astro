@@ -1,0 +1,66 @@
+---
+import "@fontsource-variable/montserrat";
+import resolveConfig from "tailwindcss/resolveConfig";
+
+interface Props {
+  title: string;
+}
+import tailwindConfig from "../../tailwind.config.mjs";
+import type { DefaultColors } from "tailwindcss/types/generated/colors";
+const config = resolveConfig(tailwindConfig);
+const colors = config.theme.colors as DefaultColors & {
+  secondary: DefaultColors["yellow"];
+};
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body
+    class="bg text-text relative mx-auto min-h-screen max-w-screen-lg overflow-x-hidden border-current shadow-straight lg:my-10 lg:border-2"
+  >
+    <div class="bg-primary-100">
+      <slot />
+    </div>
+  </body>
+</html>
+<style is:global>
+  :root {
+    --screen-md: 768px;
+    scroll-behavior: smooth;
+  }
+</style>
+<style
+  define:vars={{
+    bgColor: colors.secondary[200],
+    dotColor: colors.secondary[300],
+    bgSize: "15px",
+    dotSize: "1px",
+  }}
+>
+  .bg {
+    background-color: var(--bgColor);
+    opacity: 1;
+    background-image: radial-gradient(
+        var(--dotColor) var(--dotSize),
+        transparent var(--dotSize)
+      ),
+      radial-gradient(
+        var(--dotColor) var(--dotSize),
+        var(--bgColor) var(--dotSize)
+      );
+    background-size: var(--bgSize) var(--bgSize);
+    background-position:
+      0 0,
+      /* prettier ignore */ calc(var(--bgSize) / 2) calc(var(--bgSize) / 2);
+  }
+</style>

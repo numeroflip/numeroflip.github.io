@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import { Config } from "../config";
+import { twMerge } from "tailwind-merge";
+
+const socials = [
+  {
+    icon: "gitHub",
+    src: Config.githubUrl,
+    target: "_blank",
+    text: "visit my GitHub",
+  },
+  {
+    icon: "linkedIn",
+    src: Config.linkedInUrl,
+    target: "_blank",
+    text: "visit my LinkedIn",
+  },
+  { icon: "mail", src: Config.emailUrl, text: "send me an email" },
+];
+
+type Props = astroHTML.JSX.OlHTMLAttributes;
+const baseClasses = "inline-flex items-center justify-start gap-4 py-2";
+const parsedClasses = twMerge(baseClasses, Astro.props.class);
+---
+
+<ul {...Astro.props} class={parsedClasses}>
+  {
+    socials.map((social) => (
+      <li>
+        <a href={social.src} target={social.target}>
+          <p class="sr-only">{social.text}</p>
+          <Icon
+            class="text-primary-950/80 hover:text-primary-950 active:text-primary-900 size-6 transition-colors"
+            name={social.icon}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>
