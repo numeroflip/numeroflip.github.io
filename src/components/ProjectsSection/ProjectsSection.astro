@@ -1,0 +1,47 @@
+---
+import cryptoSg from "../../../public/images/projects/crypto_explorer.png";
+import obsidianImg from "../../../public/images/projects/obsidian-template-trigger.png";
+import Card from "../Card/Card.astro";
+const projects = [
+  {
+    title: "Token Explorer",
+    src: cryptoSg,
+    url: "https://your-crypto-list.vercel.app/",
+    github: "https://github.com/numeroflip/your-crypto-list",
+    tech: ["TypeScript", "React", "Next.js", "Tailwind"],
+    description: [
+      "Browse tokens on multiple blockchains, and select your favorites (cookie based)",
+      "It's mostly server side rendered, and has perfect performance scores.",
+    ],
+  },
+  {
+    title: "Obsidian Plugin: Auto Template Trigger",
+    src: obsidianImg,
+    github: "https://github.com/numeroflip/obsidian-auto-template-trigger",
+    tech: ["TypeScript"],
+    description: [
+      "An obsidian.md plugin, which automates adding templates to new files.",
+      "It has over 10k downloads.",
+    ],
+  },
+];
+---
+
+<ul
+  class="grid gap-10 overflow-x-auto py-10 pr-2 md:grid-cols-2 lg:grid-cols-2"
+>
+  {
+    projects.map((project) => (
+      <Card
+        as="li"
+        class="border-text h-full w-full border-2 bg-white"
+        title={project.title}
+        image={project.src}
+        description={project.description}
+        tech={project.tech}
+        url={project.url}
+        github={project.github}
+      />
+    ))
+  }
+</ul>

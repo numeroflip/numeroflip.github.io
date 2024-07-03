@@ -7,6 +7,8 @@ interface Props {
 }
 import tailwindConfig from "../../tailwind.config.mjs";
 import type { DefaultColors } from "tailwindcss/types/generated/colors";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 const config = resolveConfig(tailwindConfig);
 const colors = config.theme.colors as DefaultColors & {
   secondary: DefaultColors["yellow"];
@@ -28,9 +30,9 @@ const { title } = Astro.props;
   <body
     class="bg text-text relative mx-auto min-h-screen max-w-screen-lg overflow-x-hidden border-current shadow-straight lg:my-10 lg:border-2"
   >
-    <div class="bg-primary-100">
-      <slot />
-    </div>
+    <Header />
+    <slot />
+    <Footer />
   </body>
 </html>
 <style is:global>

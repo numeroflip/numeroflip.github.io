@@ -1,8 +1,8 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import colors from "tailwindcss/colors";
 
-const primaryColor = colors.sky;
-const secondaryColor = colors.amber;
+const primaryColor = colors.amber;
+const secondaryColor = colors.sky;
 
 /** @type {import('tailwindcss').Config} */
 export default {
