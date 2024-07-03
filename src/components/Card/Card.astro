@@ -10,11 +10,9 @@ type Props = astroHTML.JSX.HTMLAttributes & {
   github?: string;
   url?: string;
   tech: string[];
-  description?: string[];
 };
 
-const { as, title, image, github, url, tech, description, ...props } =
-  Astro.props as Props;
+const { as, title, image, github, url, tech, ...props } = Astro.props as Props;
 
 const Element = as || "div";
 ---
@@ -34,30 +32,36 @@ const Element = as || "div";
       <div class="grow font-semibold">{title}</div>
       {
         url && (
-          <a href={url} target="_blank" class="text-text/80">
+          <a
+            href={url}
+            target="_blank"
+            class="text-text/70 transition-colors hover:text-text active:text-text"
+          >
             <Icon name="openInNew" class="size-5" />
+            <span class="sr-only">Open in new tab</span>
           </a>
         )
       }
       {
         github && (
-          <a href={github} target="_blank" class="text-text/80">
+          <a
+            href={github}
+            target="_blank"
+            class="h active-text-text text-text/80 hover:text-text"
+          >
             <Icon name="gitHub" class="size-5" />
+            <span class="sr-only">Visit on GitHub</span>
           </a>
         )
       }
     </div>
     <div
-      class="text-text/80 border-primary-950/20 flex flex-col gap-2 border-t-2 px-3 py-2 text-sm"
+      class="flex flex-col gap-2 border-t-2 border-primary-950/20 px-3 py-2 text-sm text-text/80"
     >
-      {
-        description
-          ? description.map((description) => <p>{description}</p>)
-          : null
-      }
+      <slot name="description" />
     </div>
     <div
-      class="text-text/60 mt-auto flex flex-wrap gap-2 border-t px-3 py-2 text-sm *:px-1 *:py-1 *:text-xs *:font-medium"
+      class="mt-auto flex flex-wrap gap-2 border-t px-3 py-2 text-sm text-text/60 *:px-1 *:py-1 *:text-xs *:font-medium"
     >
       {tech ? tech.map((tech) => <div>{tech}</div>) : null}
     </div>
