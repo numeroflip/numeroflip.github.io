@@ -1,0 +1,17 @@
+---
+import DotGrid from "../DotGrid.astro";
+import TextInBox from "../text/TextInBox.astro";
+import Timeline from "./Timeline.astro";
+---
+
+<section id="about-me" class="w-full scroll-m-7 px-20 py-10">
+  <div class="relative inline-block">
+    <div class="text-primary-900/15">
+      <DotGrid />
+    </div>
+    <TextInBox as="h2" class="relative z-10 bg-secondary-200 text-black">
+      About Me
+    </TextInBox>
+  </div>
+  <Timeline />
+</section>

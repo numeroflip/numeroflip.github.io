@@ -1,61 +1,18 @@
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
 import DotGrid from "../components/DotGrid.astro";
 import TextInBox from "../components/text/TextInBox.astro";
 import Layout from "../layouts/Layout.astro";
 import SocialIcons from "../components/SocialIcons.astro";
-import Card from "../components/Card/Card.astro";
 import ProjectsSection from "../components/ProjectsSection/ProjectsSection.astro";
+import Timeline from "../components/AboutMeSection/Timeline.astro";
+import HeroSection from "../components/HeroSection.astro";
+import AboutMeSection from "../components/AboutMeSection/AboutMeSection.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main class="bg-primary-50">
-    <section
-      class="bg-primary-100 mx-auto w-full border-b-2 border-current px-20 py-24 pb-16"
-    >
-      <div class="relative">
-        <div class="text-primary-900/15">
-          <DotGrid />
-        </div>
-        <h1
-          class="text-primary-950 relative z-10 mb-10 text-5xl font-extrabold tracking-tight"
-        >
-          Crafting Seamless User Experiences and Scalable Solutions
-        </h1>
-      </div>
-      <p class="mb-5 text-lg">
-        Hi, I’m Aron! I specialize in inclusive design implementation.
-      </p>
-      <p class="text-lg">
-        I work with companies and agencies around the world, building Web user
-        interfaces and digital products with focus on responsive design,
-        accessibility, performance, and cutting-edge tech.
-      </p>
-      <SocialIcons class="mt-10 flex gap-4" />
-    </section>
-
-    <section id="projects" class="w-full px-20 py-10 pt-20">
-      <div class="relative mb-10 inline-block">
-        <div class="text-primary-900/15">
-          <DotGrid />
-        </div>
-        <TextInBox as="h2" class="bg-secondary-200 relative z-10 text-black">
-          Projects
-        </TextInBox>
-      </div>
-      <ProjectsSection />
-    </section>
-
-    <section id="about-me" class="w-full px-20 py-10">
-      <div class="relative inline-block">
-        <div class="text-primary-900/15">
-          <DotGrid />
-        </div>
-        <TextInBox as="h2" class="bg-secondary-200 relative z-10 text-black">
-          About Me
-        </TextInBox>
-      </div>
-    </section>
+    <HeroSection />
+    <ProjectsSection />
+    <AboutMeSection />
   </main>
 </Layout>

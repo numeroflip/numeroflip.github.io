@@ -1,4 +1,13 @@
-<div class="absolute -left-5 -top-5 bottom-10 z-0 h-full w-2/3 text-current">
+---
+import { twMerge } from "tailwind-merge";
+---
+
+<div
+  class={twMerge(
+    "absolute -left-5 -top-5 bottom-10 z-0 h-full w-2/3 text-current",
+    Astro.props.class
+  )}
+>
   <svg width="100%" height="100%">
     <pattern
       id="pattern-circles"

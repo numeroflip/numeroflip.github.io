@@ -2,6 +2,8 @@
 import cryptoSg from "../../../public/images/projects/crypto_explorer.png";
 import obsidianImg from "../../../public/images/projects/obsidian-template-trigger.png";
 import Card from "../Card/Card.astro";
+import DotGrid from "../DotGrid.astro";
+import TextInBox from "../text/TextInBox.astro";
 const projects = [
   {
     title: "Auto Template Trigger",
@@ -33,22 +35,32 @@ const projects = [
 ];
 ---
 
-<ul
-  class="grid gap-10 overflow-x-auto py-10 pr-2 md:grid-cols-2 lg:grid-cols-2"
->
-  {
-    projects.map((project) => (
-      <Card
-        as="li"
-        class="h-full w-full border-2 border-text bg-white"
-        title={project.title}
-        image={project.src}
-        tech={project.tech}
-        url={project.url}
-        github={project.github}
-      >
-        <Fragment slot="description" set:html={project.description} />
-      </Card>
-    ))
-  }
-</ul>
+<section <section id="projects" class="w-full scroll-m-7 px-20 py-10 pt-20">
+  <div class="relative mb-10 inline-block">
+    <div class="text-primary-900/15">
+      <DotGrid />
+    </div>
+    <TextInBox as="h2" class="relative z-10 bg-secondary-200 text-black">
+      Projects
+    </TextInBox>
+  </div>
+  <ul
+    class="grid gap-10 overflow-x-auto py-10 pr-2 md:grid-cols-2 lg:grid-cols-2"
+  >
+    {
+      projects.map((project) => (
+        <Card
+          as="li"
+          class="h-full w-full border-2 border-text bg-white"
+          title={project.title}
+          image={project.src}
+          tech={project.tech}
+          url={project.url}
+          github={project.github}
+        >
+          <Fragment slot="description" set:html={project.description} />
+        </Card>
+      ))
+    }
+  </ul>
+</section>
