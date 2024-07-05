@@ -5,29 +5,31 @@ const classes = {
   entry: clsx(
     [
       "group z-10 relative items-center",
-      "grid [grid-template-areas:'dot_header''._card']",
+      "grid [grid-template-areas:'._card''dot_header']",
       "grid-cols-[var(--timeline-width)_1fr]",
     ],
     [
       "md:grid-cols-[1fr_var(--timeline-width)_1fr]",
       "md:text-start gap-5 ",
 
-      "md:odd:[grid-template-areas:'._dot_header''._._card']",
+      "md:odd:[grid-template-areas:'._._card''._dot_header']",
       "md:odd:self-end",
 
-      "md:even:[grid-template-areas:'header_dot_.''card_._.']",
+      "md:even:[grid-template-areas:'card_._.''header_dot_.']",
     ]
   ),
   timeLine: clsx(
     "w-[--timeline-width] justify-self-center border-2 border-current bg-secondary-200 shadow-straight"
   ),
   card: clsx(
-    "p-5 relative [grid-area:card] text-sm bg-white border-2 border-current shadow-straight group-last-of-type:mb-10"
+    "p-5 relative [grid-area:card] text-sm bg-white border-2 border-current shadow-straight "
   ),
   dot: clsx(
     "w-[70%] md:w-4/6 aspect-square  [grid-area:dot] place-self-center rounded-full border-2 border-current bg-primary-100 "
   ),
-  header: clsx("[grid-area:header] text-xl font-bold group-odd:self-end"),
+  header: clsx(
+    "[grid-area:header] text-xl font-bold group-odd:self-end md:group-odd:self-start md:group-even:justify-self-end md:group-even:self-end"
+  ),
 };
 ---
 
@@ -73,13 +75,11 @@ const classes = {
     <li class={classes.entry}>
       <div class={classes.dot}></div>
 
-      <div
-        class="row-start-1 flex items-center gap-2 md:group-odd:self-start md:group-even:flex-row-reverse md:group-even:self-end"
-      >
+      <div class={classes.header}>
         <h3
           class="flex items-center gap-1 text-xl font-bold group-odd:self-end"
         >
-          2021 <span class="text-sm font-medium text-text/50"> - 2022</span>
+          2021
         </h3>
       </div>
 
