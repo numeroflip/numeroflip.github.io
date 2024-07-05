@@ -1,18 +1,11 @@
 ---
 import "@fontsource-variable/montserrat";
-import resolveConfig from "tailwindcss/resolveConfig";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
 }
-import tailwindConfig from "../../tailwind.config.mjs";
-import type { DefaultColors } from "tailwindcss/types/generated/colors";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-const config = resolveConfig(tailwindConfig);
-const colors = config.theme.colors as DefaultColors & {
-  secondary: DefaultColors["yellow"];
-};
 
 const { title } = Astro.props;
 ---
@@ -28,28 +21,40 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body
-    class="bg text-text relative mx-auto min-h-screen max-w-screen-lg overflow-x-hidden border-current shadow-straight lg:my-10 lg:border-2"
+    class="bg relative mx-auto min-h-screen max-w-screen-lg overflow-x-hidden border-current text-text shadow-straight lg:my-10 lg:border-2"
   >
     <Header />
     <slot />
     <Footer />
   </body>
 </html>
+
 <style is:global>
   :root {
     --screen-md: 768px;
     scroll-behavior: smooth;
   }
+
+  .layout {
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 768px) {
+      padding-left: 6%;
+      padding-right: 6%;
+    }
+  }
 </style>
-<style
-  define:vars={{
-    bgColor: colors.secondary[200],
-    dotColor: colors.secondary[300],
-    bgSize: "15px",
-    dotSize: "1px",
-  }}
->
+
+<style>
   .bg {
+    --bgColor: theme("colors.secondary.200");
+    --dotColor: theme("colors.secondary.300");
+    --bgSize: 15px;
+    --dotSize: 1px;
+
     background-color: var(--bgColor);
     opacity: 1;
     background-image: radial-gradient(
@@ -63,6 +68,6 @@ const { title } = Astro.props;
     background-size: var(--bgSize) var(--bgSize);
     background-position:
       0 0,
-      /* prettier ignore */ calc(var(--bgSize) / 2) calc(var(--bgSize) / 2);
+      calc(var(--bgSize) / 2) calc(var(--bgSize) / 2);
   }
 </style>

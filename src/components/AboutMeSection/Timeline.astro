@@ -2,65 +2,104 @@
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 const classes = {
-  dot: clsx(
-    "col-start-1 z-40 row-start-1 mb-1 size-4 self-end justify-self-center rounded-full border-2 border-current bg-primary-50 lg:col-start-2"
+  entry: clsx(
+    [
+      "group z-10 relative items-center",
+      "grid [grid-template-areas:'dot_header''._card']",
+      "grid-cols-[var(--timeline-width)_1fr]",
+    ],
+    [
+      "md:grid-cols-[1fr_var(--timeline-width)_1fr]",
+      "md:text-start gap-5 ",
+
+      "md:odd:[grid-template-areas:'._dot_header''._._card']",
+      "md:odd:self-end",
+
+      "md:even:[grid-template-areas:'header_dot_.''card_._.']",
+    ]
   ),
   timeLine: clsx(
-    "col-start-1 row-span-full w-6 justify-self-center rounded-full border-2 border-current bg-secondary-200 shadow-straight lg:col-start-2"
+    "w-[--timeline-width] justify-self-center border-2 border-current bg-secondary-200 shadow-straight"
   ),
-  card: clsx("p-5 border-2 border-current shadow-straight"),
+  card: clsx(
+    "p-5 relative [grid-area:card] text-sm bg-white border-2 border-current shadow-straight group-last-of-type:mb-10"
+  ),
+  dot: clsx(
+    "w-[70%] md:w-4/6 aspect-square  [grid-area:dot] place-self-center rounded-full border-2 border-current bg-primary-100 "
+  ),
+  header: clsx("[grid-area:header] text-xl font-bold group-odd:self-end"),
 };
 ---
 
-<section class="py-10">
-  <div class="relative z-0 flex flex-col items-center justify-center gap-1">
+<section class="my-32 [--timeline-width:18px] md:[--timeline-width:20px]">
+  <!-- Timeline top part -->
+  <div class="z-0 flex w-full flex-col gap-1 md:items-center">
     <div class={twMerge(classes.timeLine, "rounded-none z-0 h-[6px]")}></div>
-    <div class={twMerge(classes.timeLine, "rounded-none z-0 h-3")}></div>
+    <div class={twMerge(classes.timeLine, "rounded-none z-0  h-3")}></div>
   </div>
-  <div
-    class="relative z-10 mx-auto grid w-full grid-cols-[auto_1fr] grid-rows-2 gap-5 py-1 lg:grid-cols-[1fr_auto_1fr]"
+  <ul
+    class="relative my-1 flex min-h-64 w-full flex-col justify-center gap-10 pt-2"
   >
-    <div class="row-span-full grid lg:grid-rows-subgrid">
-      <div class="relative -bottom-[5px] row-start-2 flex flex-col gap-4">
-        <div class={twMerge(classes.card, "mr-10")}>
-          Codelit
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
-            eius provident qui quis eveniet voluptate harum, perferendis tenetur
-            hic ea explicabo aspernatur esse! Culpa, quis voluptatibus sunt
-            distinctio unde ipsam.
+    <li class={classes.entry}>
+      <!-- Dot -->
+      <div class={classes.dot}></div>
+
+      <div class={classes.header}>
+        <h3
+          class="flex items-center gap-1 text-xl font-bold group-odd:self-end"
+        >
+          2022 <span class="text-sm font-medium text-text/50"> - Present</span>
+        </h3>
+      </div>
+      <div class={twMerge(classes.card)}>
+        <div
+          class="mb-2 flex w-full justify-between border-b-2 border-primary-950/10 pb-2"
+        >
+          <div class="flex flex-col">
+            <span class="text-lg"> Frontend Engineer </span>
+            <div class="text-xs text-text/50">@ Prepend GmbH</div>
+            <div>2022 - Present</div>
           </div>
         </div>
-
-        <h3 class="text-end text-3xl font-bold">2022</h3>
-      </div>
-    </div>
-
-    <!-- Line -->
-
-    <div class={twMerge(classes.timeLine, " z-30 rounded-t-none")}></div>
-
-    <!-- Dot -->
-    <div class={twMerge(classes.dot, "row-start-1")}></div>
-    <div class={twMerge(classes.dot, "row-start-2")}></div>
-
-    <div class="row-span-full pr-2">
-      <div class="relative -bottom-[5px] flex flex-col gap-4">
-        <div class={twMerge(classes.card, "ml-8")}>
-          Prepend GmBh
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-            debitis, placeat earum culpa inventore nostrum odio tempora veniam
-            eum molestiae exercitationem nesciunt porro nobis error. Quasi totam
-            nisi hic omnis.
-          </div>
-        </div>
-        <div class="flex items-center gap-2">
-          <h3 class="mr-2 text-3xl font-bold">2021</h3><span class="font-medium"
-            >Prepend GmbH</span
-          >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius
+          provident qui quis eveniet voluptate harum, perferendis tenetur hic ea
+          explicabo aspernatur esse! Culpa, quis voluptatibus sunt distinctio
+          unde ipsam.
         </div>
       </div>
+    </li>
+
+    <li class={classes.entry}>
+      <div class={classes.dot}></div>
+
+      <div
+        class="row-start-1 flex items-center gap-2 md:group-odd:self-start md:group-even:flex-row-reverse md:group-even:self-end"
+      >
+        <h3
+          class="flex items-center gap-1 text-xl font-bold group-odd:self-end"
+        >
+          2021 <span class="text-sm font-medium text-text/50"> - 2022</span>
+        </h3>
+      </div>
+
+      <div class={twMerge(classes.card)}>
+        Prepend GmBh
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+          debitis, placeat earum culpa inventore nostrum odio tempora veniam eum
+          molestiae exercitationem nesciunt porro nobis error. Quasi totam nisi
+          hic omnis.
+        </div>
+      </div>
+    </li>
+
+    <div
+      class="absolute inset-0 z-0 flex flex-col gap-1 rounded-full md:items-center md:justify-center"
+    >
+      <div class={twMerge(classes.timeLine, "z-20 grow rounded-b-full")}></div>
     </div>
-  </div>
+  </ul>
+
+  <!-- Timeline bottom part -->
 </section>

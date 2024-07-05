@@ -19,6 +19,7 @@ export default {
       },
       boxShadow: {
         straight: `8px 8px 0px currentColor`,
+        "straight-sm": `4px 4px 0px currentColor`,
       },
     },
   },
