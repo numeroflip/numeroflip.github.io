@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 ---
 
 <div
+  --current-color="white"
   class={twMerge(
     "absolute -left-5 -top-5 bottom-10 z-0 h-full w-2/3 text-current",
     Astro.props.class
@@ -13,17 +14,13 @@ import { twMerge } from "tailwind-merge";
       id="pattern-circles"
       x="0"
       y="0"
-      width="20"
-      height="20"
+      width="13"
+      height="13"
       patternUnits="userSpaceOnUse"
       patternContentUnits="userSpaceOnUse"
     >
-      <circle
-        id="pattern-circle"
-        cx="10"
-        cy="10"
-        r="1.6257413380501518"
-        fill="currentColor"></circle>
+      <circle id="pattern-circle" cx="10" cy="10" r="2" fill="currentColor"
+      ></circle>
     </pattern>
 
     <rect

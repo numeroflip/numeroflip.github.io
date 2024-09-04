@@ -1,12 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
+import {
+  Image,
+  type LocalImageProps,
+  type RemoteImageProps,
+} from "astro:assets";
 import { twMerge } from "tailwind-merge";
 
 type Props = astroHTML.JSX.HTMLAttributes & {
   as: keyof HTMLElementTagNameMap;
   title: string;
-  image: ImageMetadata;
+  image: ImageMetadata | { src: string; height: number; width: number };
   github?: string;
   url?: string;
   tech: string[];
@@ -15,55 +19,105 @@ type Props = astroHTML.JSX.HTMLAttributes & {
 const { as, title, image, github, url, tech, ...props } = Astro.props as Props;
 
 const Element = as || "div";
+
+const imgProps: LocalImageProps | RemoteImageProps =
+  "format" in image
+    ? { src: image, alt: "" }
+    : { src: image.src, width: image.width, height: image.height, alt: "" };
+
+const cardUlr = url || github;
 ---
 
-<div>
-  <Element
-    {...props}
-    class={twMerge(
-      "border-2 flex flex-col relative shadow-straight",
-      props.class
-    )}
-  >
-    <Image src={image} alt="" class={"aspect-video object-cover object-top"} />
-    <div
-      class="flex items-center gap-4 border-t-2 border-current bg-white px-3 py-2"
-    >
-      <div class="grow font-semibold">{title}</div>
-      {
-        url && (
-          <a
-            href={url}
-            target="_blank"
-            class="text-text/70 transition-colors hover:text-text active:text-text"
-          >
-            <Icon name="openInNew" class="size-5" />
-            <span class="sr-only">Open in new tab</span>
-          </a>
-        )
-      }
-      {
-        github && (
-          <a
-            href={github}
-            target="_blank"
-            class="h active-text-text text-text/80 hover:text-text"
-          >
-            <Icon name="gitHub" class="size-5" />
-            <span class="sr-only">Visit on GitHub</span>
-          </a>
-        )
-      }
+<button
+  is="project-card"
+  data-url={cardUlr}
+  class={twMerge(
+    "group text-start outline-offset-4 rounded-none",
+    "active:[--tw-shadow:1px_1px_0_0_currentcolor] active:[transform:translate(7px,_7px)]",
+    "hover:[--tw-shadow:3px_3px_0_0_currentcolor] shadow-straight [transition-duration:300ms] hover:[transform:translate(5px,_5px)]",
+    "focus-within:[--tw-shadow:3px_3px_0_0_currentcolor] focus-within:[transform:translate(5px,_5px)]",
+    "focus:[--tw-shadow:3px_3px_0_0_currentcolor] focus:[transform:translate(5px,_5px)]",
+    props.class
+  )}
+  {...props}
+>
+  <div class="relative flex flex-col border-2 border-text md:flex-row">
+    <div class="aspect-video w-full overflow-hidden md:max-w-[40%]">
+      <Image
+        {...imgProps}
+        alt=""
+        class={" h-full w-full   transition-all [transition-duration:1000ms] max-w-full object-cover object-center"}
+      />
     </div>
+
     <div
-      class="flex flex-col gap-2 border-t-2 border-primary-950/20 px-3 py-2 text-sm text-text/80"
+      class="z-10 flex w-full flex-col border-t-2 border-current bg-white md:border-l-2 md:border-t-0"
     >
-      <slot name="description" />
+      <div class="flex items-center gap-4 px-3 py-2">
+        <div class="grow font-semibold">
+          {title}
+        </div>
+        {
+          url && (
+            <a
+              href={url}
+              target="_blank"
+              class="text-text/70 transition-colors hover:text-text active:text-text"
+            >
+              <Icon name="openInNew" class="size-5" />
+              <span class="sr-only">Open in new tab</span>
+            </a>
+          )
+        }
+        {
+          github && (
+            <a
+              href={github}
+              target="_blank"
+              class="h active-text-text text-text/80 hover:text-text"
+            >
+              <Icon name="gitHub" class="size-5" />
+              <span class="sr-only">Visit on GitHub</span>
+            </a>
+          )
+        }
+      </div>
+      <div
+        class="flex flex-col gap-2 border-t-2 border-primary-950/20 px-3 py-2 text-sm text-text/80"
+      >
+        <slot name="description" />
+      </div>
+      <div
+        class="mt-auto flex flex-wrap gap-2 border-t px-3 py-2 text-sm text-text/60 *:px-1 *:py-1 *:text-xs *:font-medium"
+      >
+        {tech ? tech.map((tech) => <div>{tech}</div>) : null}
+      </div>
     </div>
-    <div
-      class="mt-auto flex flex-wrap gap-2 border-t px-3 py-2 text-sm text-text/60 *:px-1 *:py-1 *:text-xs *:font-medium"
-    >
-      {tech ? tech.map((tech) => <div>{tech}</div>) : null}
-    </div>
-  </Element>
-</div>
+  </div>
+</button>
+
+<script>
+  class ProjectCard extends HTMLButtonElement {
+    constructor() {
+      super();
+      this.role = "button";
+
+      const links = this.querySelectorAll("a");
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+      });
+
+      this.addEventListener("click", (e) => {
+        this.openUrl();
+      });
+    }
+
+    openUrl() {
+      window.open(this.dataset.url, "_blank");
+    }
+  }
+
+  customElements.define("project-card", ProjectCard, { extends: "button" });
+</script>

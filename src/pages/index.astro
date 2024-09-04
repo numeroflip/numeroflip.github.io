@@ -3,12 +3,30 @@ import Layout from "../layouts/Layout.astro";
 import ProjectsSection from "../components/ProjectsSection/ProjectsSection.astro";
 import HeroSection from "../components/HeroSection.astro";
 import AboutMeSection from "../components/AboutMeSection/AboutMeSection.astro";
+import ValuePropositionSection from "../components/ValuePropositionSection.astro";
+import TimelineSection from "../components/TimelineSection/TimelineSection.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Aron Berenyi ">
   <main class="bg-primary-50">
     <HeroSection />
-    <ProjectsSection />
     <AboutMeSection />
+    <ValuePropositionSection
+      title={'"Do NOT not hire this guy"'}
+      description={[
+        "If you want to settle for good enough.",
+        "His extra effort means he'll push your project from satisfactory to spectacular, which might be too much excellence to handle.",
+      ]}
+    />
+    <ProjectsSection />
+    <ValuePropositionSection title={'"I highly recommend him"'}>
+      <blockquote class="italic">
+        <p>"I’ve had the pleasure of working with Áron</p>
+        <p>He is exceptionally skilled and a very sympathetic colleague."</p>
+
+        <p class="mt-4 not-italic">-- Sebastian Schlaak</p>
+      </blockquote>
+    </ValuePropositionSection>
+    <TimelineSection />
   </main>
 </Layout>

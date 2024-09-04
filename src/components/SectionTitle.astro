@@ -1,0 +1,13 @@
+---
+import DotGrid from "./DotGrid.astro";
+import TextInBox from "./text/TextInBox.astro";
+---
+
+<div class="relative inline-block">
+  <div class="text-primary-900/15">
+    <DotGrid />
+  </div>
+  <TextInBox as="h2" class="relative z-10 bg-secondary-200 text-black">
+    <slot />
+  </TextInBox>
+</div>

@@ -1,8 +1,8 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import colors from "tailwindcss/colors";
+import typography from "@tailwindcss/typography";
 
-const primaryColor = colors.amber;
-const secondaryColor = colors.sky;
+const [primaryColor, secondaryColor] = [colors.amber, colors.cyan];
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -23,5 +23,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };

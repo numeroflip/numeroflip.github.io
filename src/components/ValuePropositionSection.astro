@@ -1,0 +1,44 @@
+---
+import DotGrid from "./DotGrid.astro";
+
+interface Props {
+  title: string;
+  description?: string[];
+  children?: any;
+}
+
+const { title, description = [] } = Astro.props;
+---
+
+<section
+  class="layout mx-auto w-full border-y-2 border-primary-950/10 bg-primary-100 py-24 pb-16"
+>
+  <div class="relative">
+    <div class="text-primary-900/15">
+      <DotGrid class="w-1/2" />
+    </div>
+
+    <h2
+      class="relative z-10 mb-10 max-w-3xl bg-primary-100/80 text-2xl font-extrabold tracking-tight text-primary-950 md:text-4xl"
+    >
+      {title}
+    </h2>
+  </div>
+  <div class="mb-5 max-w-3xl text-lg text-text/80">
+    <!-- <p class="mb-5">If you want to be involved in every tiny decision.</p>
+
+    <p class="mb-5">
+      He’s self-reliant and takes full responsibility for delivering a top-notch
+      product, freeing you up from endless meetings.
+    </p> -->
+    {description.map((item) => <p class="mb-5">{item}</p>)}
+    <slot />
+
+    <!--     Hi, 👋 I’m Aron! I Crafting Seamless User Experiences and Scalable Solutions. -->
+  </div>
+  <!--   <p class="text-lg">
+    I work with companies and agencies around the world, building Web user
+    interfaces and digital products with focus on responsive design,
+    accessibility, performance, and cutting-edge tech.
+  </p> -->
+</section>

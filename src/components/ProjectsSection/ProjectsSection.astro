@@ -1,57 +1,88 @@
 ---
+import type { ImageMetadata } from "astro";
 import cryptoSg from "../../../public/images/projects/crypto_explorer.png";
 import obsidianImg from "../../../public/images/projects/obsidian-template-trigger.png";
 import Card from "../Card/Card.astro";
 import DotGrid from "../DotGrid.astro";
 import TextInBox from "../text/TextInBox.astro";
+import SectionTitle from "../SectionTitle.astro";
 const projects = [
-  {
-    title: "Auto Template Trigger",
-    src: obsidianImg,
-    github: "https://github.com/numeroflip/obsidian-auto-template-trigger",
-    tech: ["TypeScript"],
+  defineProject({
+    title: "Stardew Combat Calculator",
+    src: {
+      src: "https://stardew-combat-calculator.com/ogImg.png",
+      width: 1200,
+      height: 630,
+    },
+    url: "https://www.stardew-combat-calculator.com/",
+    github: "https://github.com/numeroflip/stardew-combat-calculator",
+    tech: ["Svelte", "Tailwind"],
     description: `<p>
-      An <a class="text-secondary-700 hover:underline active:text-secondary-800 font-semibold" href="https://obsidian.md" target="_blank">obsidian.md</a> plugin, which
-      automates adding templates to new files.
+      A tool to calculate combat statistics in <a class="text-secondary-700 hover:underline active:text-secondary-800 font-semibold" href="https://www.stardewvalley.net/">Stardew Valley</a>
     </p>
-    <p>It has over 10k downloads.</p>
+    <p>
+      It helps in understanding and optimizing someone's character
+    </p>
     `,
-  },
-  {
+  }),
+  defineProject({
     title: "Token Explorer",
     src: cryptoSg,
     url: "https://your-crypto-list.vercel.app/",
     github: "https://github.com/numeroflip/your-crypto-list",
     tech: ["TypeScript", "React", "Next.js", "Tailwind"],
     description: `<p>
-      Browse tokens on multiple blockchains, and select your favorites
-      (cookie based)
+    Browse tokens on multiple blockchains, and select your favorites
+    (cookie based)
     </p>
     <p>
-      It's mostly server side rendered, and has perfect performance scores.
+    ~95% SSR, having SPA-like speed (also has perfect page speed scores)
     </p>
     `,
-  },
+  }),
+  defineProject({
+    title: "Plugin: Auto Template Trigger",
+    src: obsidianImg,
+    github: "https://github.com/numeroflip/obsidian-auto-template-trigger",
+    url: "https://publish.obsidian.md/hub/02+-+Community+Expansions/02.05+All+Community+Expansions/Plugins/auto-template-trigger",
+    tech: ["TypeScript"],
+    description: `<p>
+    An <a class="text-secondary-700 hover:underline active:text-secondary-800 font-semibold" href="https://obsidian.md" target="_blank">obsidian.md</a> plugin, which
+    automates adding templates to new files
+    </p>
+    <p>It has over 25k downloads</p>
+    `,
+  }),
 ];
+
+type Project = {
+  title: string;
+  src: ImageMetadata | { src: string; height: number; width: number };
+  url?: string;
+  github: string;
+  tech: string[];
+  description: string;
+};
+
+function defineProject(obj: Project) {
+  return { ...obj };
+}
 ---
 
 <section id="projects" class="layout w-full scroll-m-7 py-10 pt-20">
-  <div class="relative mb-10 inline-block">
-    <div class="text-primary-900/15">
-      <DotGrid />
-    </div>
-    <TextInBox as="h2" class="relative z-10 bg-secondary-200 text-black">
-      Projects
-    </TextInBox>
-  </div>
-  <ul
-    class="grid gap-10 overflow-x-auto py-10 pr-2 md:grid-cols-2 lg:grid-cols-2"
-  >
+  <SectionTitle> Projects </SectionTitle>
+  <p class="mt-10">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste iusto eos
+    assumenda saepe aspernatur placeat laborum qui nihil blanditiis. Sunt,
+    reiciendis! Nam architecto laboriosam autem qui repellendus exercitationem
+    atque aliquam.
+  </p>
+  <ul class="grid gap-10 py-10 pr-2">
     {
       projects.map((project) => (
         <Card
           as="li"
-          class="h-full w-full border-2 border-text bg-white"
+          class="h-full w-full bg-white"
           title={project.title}
           image={project.src}
           tech={project.tech}
