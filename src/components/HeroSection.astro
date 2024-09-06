@@ -1,4 +1,5 @@
 ---
+import type { AstroIntegrationLogger } from "astro";
 import DotGrid from "./DotGrid.astro";
 import SocialIcons from "./SocialIcons.astro";
 ---
@@ -6,26 +7,20 @@ import SocialIcons from "./SocialIcons.astro";
 <section
   class="layout mx-auto w-full border-b-2 border-primary-950/10 bg-primary-100 py-24 pb-16"
 >
+  <div class="relative z-20 inline bg-primary-100/80 opacity-100 md:text-xl">
+    Hi, 👋 I’m Aron,
+  </div>
   <div class="relative">
     <div class="text-primary-900/15">
       <DotGrid class="w-1/2" />
     </div>
-
-    <!--     <h1
-      class="relative z-10 mb-10 bg-primary-100/80 text-5xl font-extrabold tracking-tight text-primary-950"
-    >
-      Crafting Seamless User Experiences and Scalable Solutions
-    </h1> -->
     <h1
-      class="relative z-10 mb-10 max-w-3xl bg-primary-100/80 text-3xl font-extrabold tracking-tight text-primary-950 md:text-5xl"
+      class="relative z-10 mb-10 max-w-3xl bg-primary-100/80 text-3xl font-extrabold tracking-tight text-primary-950 md:text-5xl lg:mb-16"
     >
       I'm Not a Developer
-      <!--  Struggling to Find a Developer Who Delivers?   -->
     </h1>
   </div>
   <div class="mb-5 max-w-3xl text-lg text-text/80">
-    <!-- <p class="mb-5">Look no further</p> -->
-
     <p class="mb-5">I'm a problem solver</p>
     <p>
       Get to know me, and you'll discover someone who is dedicated to crafting
@@ -33,24 +28,5 @@ import SocialIcons from "./SocialIcons.astro";
     </p>
   </div>
 
-  <!-- <p class="mb-5">If you want to be involved in every tiny decision.</p>
-
-    <p class="mb-5">
-      He’s self-reliant and takes full responsibility for delivering a top-notch
-      product, freeing you up from endless meetings.
-    </p> -->
-
-  <!--     <p class="mb-5">If you want to settle for good enough.</p>
-    <p class="mb-5">
-      His extra effort means he’ll push your project from satisfactory to
-      spectacular, which might be too much excellence to handle.
-    </p> -->
-
-  <!--     Hi, 👋 I’m Aron! I Crafting Seamless User Experiences and Scalable Solutions. -->
-  <!--   <p class="text-lg">
-    I work with companies and agencies around the world, building Web user
-    interfaces and digital products with focus on responsive design,
-    accessibility, performance, and cutting-edge tech.
-    </p> -->
   <SocialIcons class="mt-10 flex gap-4" />
 </section>
