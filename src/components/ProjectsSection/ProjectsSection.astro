@@ -3,8 +3,6 @@ import type { ImageMetadata } from "astro";
 import cryptoSg from "../../../public/images/projects/crypto_explorer.png";
 import obsidianImg from "../../../public/images/projects/obsidian-template-trigger.png";
 import Card from "../Card/Card.astro";
-import DotGrid from "../DotGrid.astro";
-import TextInBox from "../text/TextInBox.astro";
 import SectionTitle from "../SectionTitle.astro";
 const projects = [
   defineProject({
@@ -69,7 +67,7 @@ function defineProject(obj: Project) {
 }
 ---
 
-<section id="projects" class="layout w-full scroll-m-7 py-10 pt-20">
+<section id="projects" class="layout w-full py-10 pt-20">
   <SectionTitle> Projects </SectionTitle>
   <p class="mt-10">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste iusto eos

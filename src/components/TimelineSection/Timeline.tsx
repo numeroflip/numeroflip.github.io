@@ -54,26 +54,27 @@ const timelineEntries: TimelineEntry[] = [
           "Implemented web performance optimization techniques to improve page load times by 30%",
           ,
         ],
-        tech: ["TS", "React", "Tailwind", "Next.js"],
+        tech: ["TS", "React", "Figma", "Tailwind", "Next.js"],
       }),
       defineProject({
         name: "Real Estate Platform and Marketplace",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius provident",
         list: [
-          "Built the ",
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius provident",
-          "ea explicabo aspernatur esse! Culpa, quis voluptatibus sunt distinctio unde ipsam",
+          "Shipped a no-code, component-based page builder system on a headless CMS for efficient page management",
+          "Collaborated with a designer team, to implement pixel-perfect designs",
         ],
-        tech: ["TS", "React", "Tailwind", "Next.js", "Contentful"],
+        tech: ["TS", "Figma", "React", "Tailwind", "Next.js", "Contentful"],
       }),
       defineProject({
         name: "Management solutions for medical representatives",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius provident",
         list: [
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius provident",
-          "ea explicabo aspernatur esse! Culpa, quis voluptatibus sunt distinctio unde ipsam",
+          "Enhanced an SPA web app performance by introducing react-query and state optimization, leading to a ~70% decrease in render times, and a snappier UX",
+          "Added timezone support",
+          "Incorporated custom maps, CMS data, geolocation, email, and a high variety of services",
+          "Added features, and robust access control to a GraphQL API",
         ],
         tech: ["React", "Laravel", "PHP", "MySQL", "GraphQL", "Firebase"],
       }),
@@ -90,20 +91,20 @@ const timelineEntries: TimelineEntry[] = [
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius provident",
         list: [
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius provident",
-          "ea explicabo aspernatur esse! Culpa, quis voluptatibus sunt distinctio unde ipsam",
+          "Led the architecture and implementation of a React-based SPA for it's admin interface.",
+          "Refined and expanded GraphQL endpoints it's Node.js backend",
         ],
-        tech: ["TS", "React", "Tailwind", "Next.js"],
+        tech: ["TS", "React", "Node.js", "MySQL", "Material UI"],
       }),
       defineProject({
         name: "An online learning platform",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius provident",
         list: [
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius provident",
-          "ea explicabo aspernatur esse! Culpa, quis voluptatibus sunt distinctio unde ipsam",
+          "Enhanced productivity and infrastructure scalability by dockerizing it, and setting up CI/CD pipelines for its deployment",
+          "Implemented note-taking features",
         ],
-        tech: ["TS", "React", "Material UI", "Docker", "Nodejs"],
+        tech: ["TS", "React", "Redux", "Docker", "CI/CD"],
       }),
     ],
   },
